@@ -1,0 +1,14 @@
+.my-h1-test {
+  color: #cacaca;
+}
+.bg-purple {
+  background: purple;
+}
+#app {
+  background-image: url("../img/bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
