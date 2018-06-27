@@ -1,9 +1,3 @@
-.my-h1-test {
-  color: #cacaca;
-}
-.bg-purple {
-  background: purple;
-}
 #app {
   background-image: url("../img/bg.jpg");
   background-attachment: fixed;
@@ -11,4 +5,29 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+}
+.my-h1-test {
+  color: #cacaca;
+}
+.bg-purple {
+  background: purple;
+}
+.form-wrapper {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 10px;
+}
+.form-checkbox {
+  height: 5rem;
+}
+.form-checkbox label {
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  white-space: normal;
+  line-height: 12px;
+}
+.policy-card {
+  overflow: scroll;
+  background: #ffffff;
 }

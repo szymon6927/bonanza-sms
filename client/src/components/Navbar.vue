@@ -1,27 +1,44 @@
 <template>
-  <b-navbar class="shadow mb-5" toggleable="md" type="dark" variant="purple">
-
-    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-
-    <b-navbar-brand to="/">Promocje Bonanza</b-navbar-brand>
-
-    <b-collapse is-nav id="nav_collapse">
-
-      <b-navbar-nav>
-        <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/ping">ping</b-nav-item>
-        <b-nav-item to="/form">form</b-nav-item>
-      </b-navbar-nav>
-
-    </b-collapse>
-  </b-navbar>
-
+  <v-bottom-nav
+    :value="true"
+    :active.sync="e2"
+    :color="color"
+    absolute
+    shift
+  >
+    <v-btn dark to="/">
+      <span>Home</span>
+      <v-icon>home</v-icon>
+    </v-btn>
+    <v-btn dark to="/form">
+      <span>Form</span>
+      <v-icon>book</v-icon>
+    </v-btn>
+    <v-btn dark to="/private-policy">
+      <span>Private policy</span>
+      <v-icon>music_note</v-icon>
+    </v-btn>
+  </v-bottom-nav>
 </template>
 
 <script>
-export default {
-  name: 'Navbar'
-}
+  export default {
+    name: 'Navbar',
+    data () {
+      return {
+        e2: 1
+      }
+    },
+    computed: {
+      color () {
+        switch (this.e2) {
+          case 0: return 'blue'
+          case 1: return 'brown darken-1'
+          case 2: return 'teal'
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>
