@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <!--<img src="./assets/logo.png">-->
     <router-view/>
     <Navbar></Navbar>
   </v-app>

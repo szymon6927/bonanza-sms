@@ -3,8 +3,8 @@
     :value="true"
     :active.sync="e2"
     :color="color"
-    absolute
     shift
+    fixed
   >
     <v-btn dark to="/">
       <span>Home</span>
@@ -12,11 +12,11 @@
     </v-btn>
     <v-btn dark to="/form">
       <span>Form</span>
-      <v-icon>book</v-icon>
+      <v-icon>fas fa-edit</v-icon>
     </v-btn>
     <v-btn dark to="/private-policy">
       <span>Private policy</span>
-      <v-icon>music_note</v-icon>
+      <v-icon>fas fa-list</v-icon>
     </v-btn>
   </v-bottom-nav>
 </template>
@@ -32,9 +32,9 @@
     computed: {
       color () {
         switch (this.e2) {
-          case 0: return 'blue'
-          case 1: return 'brown darken-1'
-          case 2: return 'teal'
+          case 0: return 'brown darken-2'
+          case 1: return 'brown darken-3'
+          case 2: return 'brown darken-4'
         }
       }
     }

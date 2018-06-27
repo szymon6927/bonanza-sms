@@ -1,21 +1,18 @@
 #app {
   background-image: url("../img/bg.jpg");
-  background-attachment: fixed;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-.my-h1-test {
-  color: #cacaca;
-}
-.bg-purple {
-  background: purple;
+ul, ol {
+  padding-left: 15px;
 }
 .form-wrapper {
   background: rgba(255, 255, 255, 0.8);
   padding: 1rem;
   border-radius: 10px;
+  text-align: center;
 }
 .form-checkbox {
   height: 5rem;
@@ -27,7 +24,20 @@
   white-space: normal;
   line-height: 12px;
 }
-.policy-card {
-  overflow: scroll;
-  background: #ffffff;
+.content__wraper {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.logo {
+  width: 80%;
+}
+.bonanza-name {
+  font-weight: bold;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 1rem 0;
+}
+.form-wrapper .logo {
+  width: 40%;
 }
