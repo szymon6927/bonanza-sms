@@ -24,7 +24,6 @@ def create_app(config_name):
     @app.route('/<path:path>')
     def catch_all(path):
         if app.debug:
-            print("app debug", flush=True)
             return requests.get('http://localhost:8081/{}'.format(path)).text
         return render_template("index.html")
 
