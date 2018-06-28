@@ -12,8 +12,8 @@ login_manager = LoginManager()
 def create_app(config_name):
     app = Flask(__name__,
                 instance_relative_config=True,
-                static_folder="/dist/static",
-                template_folder="./dist")
+                static_folder="../dist/static",
+                template_folder="../dist")
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
     cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -21,6 +21,10 @@ def create_app(config_name):
 
     @app.route("/")
     def index():
+        return render_template("index.html")
+
+    @app.route('/<path:path>')
+    def catch_all(path):
         return render_template("index.html")
 
     @app.route('/client', methods=["POST"])
