@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Form from '@/components/Form'
 import PrivatePolicy from '@/components/PrivatePolicy'
+import Clients from '@/components/Clients'
 import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
@@ -23,6 +24,11 @@ export default new Router({
       path: '/private-policy',
       name: 'PrivatePolicy',
       component: PrivatePolicy
+    },
+    {
+      path: '/clients',
+      name: 'Clients',
+      component: Clients
     },
     {
       path: '*',

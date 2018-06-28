@@ -25,5 +25,6 @@ def add_client():
 @api.route('/api/clients', methods=["GET"])
 def get_clients():
     clients = Clients.query.all()
-    print(clients)
-    return jsonify(clients)
+    clients_json_list = [client.as_dict() for client in clients]
+    print(clients_json_list, flush=True)
+    return jsonify(clients_json_list)

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="mb-5">
     <v-layout column align-center justify-center>
-      <v-form class="form-wrapper" ref="form" lazy-validation v-if="show">
+      <v-form class="form-wrapper elevation-10" ref="form" lazy-validation v-if="show">
         <img class="logo" src="/static/western.png">
         <h2>Łap rabaty, zapisz się już dziś!</h2>
         <v-text-field
