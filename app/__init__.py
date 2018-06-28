@@ -1,6 +1,7 @@
 import requests
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_cors import CORS
 
@@ -27,9 +28,11 @@ def create_app(config_name):
             return requests.get('http://localhost:8081/{}'.format(path)).text
         return render_template("index.html")
 
-    @app.route('/client', methods=["POST"])
-    def get_client():
-        test = request.form["phone"]
-        print(test, flush=True)
+    migrate = Migrate(app, db)
+
+    from app.models import Users, Clients
+
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint)
 
     return app

@@ -56,7 +56,7 @@
       <v-btn dark flat @click.native="form.snackbar = false">Zamknij</v-btn>
       </v-snackbar>
     </v-layout>
-    <v-layout row wrap v-if="grettings">
+    <v-layout column align-center justify-center v-if="grettings">
       <Greetings></Greetings>
     </v-layout>
   </v-container>
@@ -104,14 +104,15 @@
         this.$refs.form.reset()
       },
       sendForm: function() {
-        const path = '/client';
+        const path = '/api/client';
         const payload = {
           'name': this.form.name,
           'phone': this.form.phone
         };
         axios.post(path, payload)
-          .then(() => {
+          .then((data) => {
             console.log('successfull');
+            console.log(data.data.status)
             this.show = false;
             this.grettings = true;
           })
