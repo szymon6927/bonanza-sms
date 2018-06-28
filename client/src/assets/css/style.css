@@ -38,6 +38,6 @@ ul, ol {
   border-bottom: 1px solid #222;
   padding: 1rem 0;
 }
-.form-wrapper .logo {
+.form-wrapper .logo, .notfound .logo {
   width: 40%;
 }
