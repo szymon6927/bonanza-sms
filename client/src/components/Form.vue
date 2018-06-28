@@ -22,7 +22,7 @@
         <v-checkbox
           class="form-checkbox"
           v-model="form.selected"
-          color="brown darken-3"
+          color="primary"
           value="rodo-policy"
           hide-details
           required
@@ -38,7 +38,7 @@
         <v-checkbox
           class="form-checkbox"
           v-model="form.selected"
-          color="brown darken-3"
+          color="primary"
           value="marketing-policy"
           label="Wyrażam zgodę na otrzymywanie informacji handlowej za pomocą środków komunikacji
           elektronicznej, zgodnie z Ustawą o świadczeniu usług drogą elektroniczną."
@@ -63,7 +63,9 @@
 </template>
 
 <script>
-  import Greetings from "./Greetings"
+  import Greetings from './Greetings'
+  import axios from 'axios'
+
   export default {
     name: 'Form',
     components: { Greetings },
@@ -90,21 +92,32 @@
     methods: {
       onSubmit: function () {
         if (this.$refs.form.validate()) {
-          console.log("submit")
-          console.log(this.form.name, this.form.phone, this.form.selected)
-          console.log(this.form.selected.length)
           if (this.form.selected.length < 2) {
             this.form.snackbar = true;
           }
           else {
-            this.show = false
-            this.grettings = true
+            this.sendForm()
           }
-
         }
       },
       onReset: function() {
         this.$refs.form.reset()
+      },
+      sendForm: function() {
+        const path = '/client';
+        const payload = {
+          'name': this.form.name,
+          'phone': this.form.phone
+        };
+        axios.post(path, payload)
+          .then(() => {
+            console.log('successfull');
+            this.show = false;
+            this.grettings = true;
+          })
+          .catch((error) => {
+            console.log('errors', error)
+          })
       }
     }
   }

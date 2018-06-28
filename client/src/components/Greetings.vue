@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <h1>Dziękujemy za rejestrację i życzymy udanego wypoczynku</h1>
-    <v-btn color="success" to="/">Home</v-btn>
+  <div class="content__wraper grettings text-xs-center">
+    <img class="logo" src="/static/western.png">
+    <h1>Bar Bonanza!</h1>
+    <h2 class="mb-3">dziękuje za rejestrację, życzy udanego wypoczynku i pięknej pogody!</h2>
+    <div class="icons__wrapper mb-4">
+      <v-icon class="pr-2" large color="yellow darken-1">fas fa-sun</v-icon>
+      <v-icon large color="orange darken-3">fas fa-umbrella-beach</v-icon>
+    </div>
+    <v-btn round block large color="success mt-3" to="/">Strona główna</v-btn>
   </div>
 </template>
 
