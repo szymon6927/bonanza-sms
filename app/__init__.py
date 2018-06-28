@@ -1,3 +1,4 @@
+import requests
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -19,12 +20,12 @@ def create_app(config_name):
     cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
     db.init_app(app)
 
-    @app.route("/")
-    def index():
-        return render_template("index.html")
-
+    @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
     def catch_all(path):
+        if app.debug:
+            print("app debug", flush=True)
+            return requests.get('http://localhost:8081/{}'.format(path)).text
         return render_template("index.html")
 
     @app.route('/client', methods=["POST"])
