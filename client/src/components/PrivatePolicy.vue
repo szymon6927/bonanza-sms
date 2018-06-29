@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="mb-5">
     <v-layout column align-center justify-center>
-      <div class="content__wraper">
+      <div class="content__wraper elevation-10">
         <h3 class="headline text-xs-center mb-2">Polityka prywatności</h3>
         <div><p>
           <b>Administratorem danych osobowych jest "W & W " WOJCIECH WICZKOWSKI</b>

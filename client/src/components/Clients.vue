@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="mb-5">
     <v-layout column align-center justify-center>
-      <div class="content__wraper grettings text-xs-center">
+      <div class="content__wraper elevation-10 grettings text-xs-center">
         <h2 class="mb-4">Wszyscy zarejestrowani</h2>
         <v-data-table
           :headers="headers"

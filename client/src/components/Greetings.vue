@@ -1,5 +1,5 @@
 <template>
-  <div class="content__wraper grettings text-xs-center">
+  <div class="content__wraper grettings elevation-10 text-xs-center">
     <img class="logo" src="/static/western.png">
     <h1>Bar Bonanza!</h1>
     <h2 class="mb-3">dziękuje za rejestrację, życzy udanego wypoczynku i pięknej pogody!</h2>

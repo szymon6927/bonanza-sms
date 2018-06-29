@@ -1,24 +1,30 @@
 <template>
   <v-bottom-nav
-    :value="true"
-    :active.sync="e2"
-    :color="color"
-    shift
-    fixed
-  >
-    <v-btn dark to="/">
-      <span>Home</span>
+      :active.sync="bottomNav"
+      :value="true"
+      fixed
+      color="brown darken-3"
+    >
+    <v-btn dark value="home" to="/">
+      <span>Strona główna</span>
       <v-icon>home</v-icon>
     </v-btn>
-    <v-btn dark to="/form">
-      <span>Form</span>
+
+    <v-btn dark value="form" to="/form">
+      <span>Formularz</span>
       <v-icon>fas fa-edit</v-icon>
     </v-btn>
-    <v-btn dark to="/private-policy">
-      <span>Private policy</span>
+
+    <v-btn dark value="private-policy" to="/private-policy">
+      <span class="text-xs-center">Polityka pryw</span>
       <v-icon>fas fa-list</v-icon>
     </v-btn>
-  </v-bottom-nav>
+
+    <v-btn dark value="about" to="/about">
+      <span>O aplikacji</span>
+      <v-icon>fas fa-users</v-icon>
+    </v-btn>
+    </v-bottom-nav>
 </template>
 
 <script>
@@ -26,16 +32,7 @@
     name: 'Navbar',
     data () {
       return {
-        e2: 1
-      }
-    },
-    computed: {
-      color () {
-        switch (this.e2) {
-          case 0: return 'brown darken-2'
-          case 1: return 'brown darken-3'
-          case 2: return 'brown darken-4'
-        }
+        bottomNav: 'home'
       }
     }
   }

@@ -41,3 +41,9 @@ ul, ol {
 .form-wrapper .logo, .notfound .logo {
   width: 40%;
 }
+
+@media (min-width: 615px) {
+  .content__wraper, .form-wrapper {
+    border-radius: 0;
+  }
+}

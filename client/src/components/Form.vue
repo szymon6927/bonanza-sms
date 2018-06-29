@@ -45,7 +45,7 @@
           required
         ></v-checkbox>
         <v-btn class="mb-3" round block color="light" @click="onReset">Wyczyść</v-btn>
-        <v-btn round block color="primary white--text" @click="onSubmit">Wyślij</v-btn>
+        <v-btn round block color="light-blue darken-4 white--text" @click="onSubmit">Wyślij</v-btn>
       </v-form>
       <v-snackbar
         :timeout="5000"
