@@ -1,9 +1,13 @@
+body {
+  font-family: 'Catamaran', sans-serif;
+}
 #app {
   background-image: url("../img/bg.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: 'Catamaran', sans-serif;
 }
 ul, ol {
   padding-left: 15px;
