@@ -40,16 +40,16 @@
           v-model="form.selected"
           color="primary"
           value="marketing-policy"
-          label="Wyrażam zgodę na otrzymywanie informacji handlowej za pomocą środków komunikacji
-          elektronicznej, zgodnie z Ustawą o świadczeniu usług drogą elektroniczną."
+          label="Wyrażam zgodę na wykorzystywanie telekomunikacyjnych urządzeń końcowych,
+          w tym telefonów dla celów marketingu bezpośredniego."
           required
         ></v-checkbox>
         <v-btn class="mb-3" round block color="light" @click="onReset">Wyczyść</v-btn>
         <v-btn round block color="light-blue darken-4 white--text" @click="onSubmit">Wyślij</v-btn>
       </v-form>
 
-      <v-snackbar :timeout="5000" :top="'top'" color="red" v-model="form.snackbar">
-        Proszę zaakcpetować polityki prywatności
+      <v-snackbar auto-height :timeout="10000" :top="'top'" color="red" v-model="form.snackbar">
+        W związku z RODO, zaakcpetuj aby otrzymywać rabaty i powiadomienia drogą SMS
         <v-btn dark flat @click.native="form.snackbar = false">Zamknij</v-btn>
       </v-snackbar>
 
