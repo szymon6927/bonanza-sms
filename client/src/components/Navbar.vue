@@ -4,6 +4,7 @@
       :value="true"
       fixed
       color="brown darken-3"
+      class="hidden-md-and-up"
     >
     <v-btn dark value="home" to="/">
       <span>Strona główna</span>

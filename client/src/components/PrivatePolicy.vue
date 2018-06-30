@@ -3,7 +3,7 @@
     <v-layout column align-center justify-center>
       <div class="content__wraper elevation-10">
         <h3 class="headline text-xs-center mb-2">Polityka prywatności</h3>
-        <div><p>
+        <p>
           <b>Administratorem danych osobowych jest "W & W " WOJCIECH WICZKOWSKI</b>
           <b>Artylerzystów 6, 84-300 Lębork</b>
           <b> posługująca się numerem NIP 8411010984.</b>
@@ -139,8 +139,7 @@
           <ol>
             <li>
               <p> Google –
-                <a href="https://www.google.pl/intl/pl/policies"
-                   data-order="31">https://www.google.pl/intl/pl/policies</a>
+                <a href="https://www.google.pl/intl/pl/policies">https://www.google.pl/intl/pl/policies</a>
               </p>
             </li>
           </ol>
@@ -220,7 +219,7 @@
             <u>wwiczkowski@wp.pl</u> lub kontakt listowny na adres: "W & W " WOJCIECH WICZKOWSKI, Artylerzystów 6,
             84-300
             Lębork
-          </p></div>
+          </p>
       </div>
     </v-layout>
   </v-container>
