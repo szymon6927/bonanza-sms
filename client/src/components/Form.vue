@@ -47,14 +47,17 @@
         <v-btn class="mb-3" round block color="light" @click="onReset">Wyczyść</v-btn>
         <v-btn round block color="light-blue darken-4 white--text" @click="onSubmit">Wyślij</v-btn>
       </v-form>
-      <v-snackbar
-        :timeout="5000"
-        :top="'top'"
-        color="red"
-        v-model="form.snackbar"
-      >Proszę zaakcpetować polityki prywatności
-      <v-btn dark flat @click.native="form.snackbar = false">Zamknij</v-btn>
+
+      <v-snackbar :timeout="5000" :top="'top'" color="red" v-model="form.snackbar">
+        Proszę zaakcpetować polityki prywatności
+        <v-btn dark flat @click.native="form.snackbar = false">Zamknij</v-btn>
       </v-snackbar>
+
+      <v-snackbar :timeout="5000" :top="'top'" color="red" v-model="form.error">
+        Coś poszło nie tak, spróbuj ponownie
+        <v-btn dark flat @click.native="form.error = false">Zamknij</v-btn>
+      </v-snackbar>
+
     </v-layout>
     <v-layout column align-center justify-center v-if="grettings">
       <Greetings></Greetings>
@@ -83,7 +86,8 @@
             v => /^(?:\(?\+?48)?(?:[-\.\(\)\s]*(\d)){9}\)?$/.test(v) || 'Proszę podać poprawny numer tel'
           ],
           selected: [],
-          snackbar: false
+          snackbar: false,
+          error: false
         },
         show: true,
         grettings: false
@@ -118,6 +122,7 @@
           })
           .catch((error) => {
             console.log('errors', error)
+            this.form.error = true;
           })
       }
     }

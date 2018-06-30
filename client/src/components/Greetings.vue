@@ -18,5 +18,9 @@
 </script>
 
 <style scoped>
-
+  @media (min-width: 615px) {
+    .logo {
+      width: 40%;
+    }
+  }
 </style>
