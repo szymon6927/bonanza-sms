@@ -22,7 +22,7 @@
     </v-btn>
 
     <v-btn dark value="about" to="/about">
-      <span>O aplikacji</span>
+      <span>O nas</span>
       <v-icon>fas fa-users</v-icon>
     </v-btn>
     </v-bottom-nav>

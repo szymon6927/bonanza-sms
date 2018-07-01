@@ -54,7 +54,7 @@
           {title: 'Strona główna', icon: 'home', href: '/'},
           {title: 'Formularz', icon: 'question_answer', href: '/form'},
           {title: 'Polityka prywatności', icon: 'fas fa-list', href: '/private-policy'},
-          {title: 'O aplikacji', icon: 'fas fa-users', href: '/about'},
+          {title: 'O nas', icon: 'fas fa-users', href: '/about'},
         ]
       }
     }
