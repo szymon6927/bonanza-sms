@@ -1,5 +1,6 @@
 body {
   font-family: 'Catamaran', sans-serif;
+  font-size: 17px;
 }
 
 #app {
@@ -58,6 +59,22 @@ ul, ol {
 .jumbotron__image {
   max-width: 100% !important;
   height: auto !important;
+}
+
+.carousel {
+  height: 40vh;
+}
+
+@media (max-width: 1024px) {
+  .carousel {
+    height: 28vh;
+  }
+}
+
+@media (max-width: 695px) {
+  .carousel {
+    height: 25vh;
+  }
 }
 
 @media (min-width: 615px) {
