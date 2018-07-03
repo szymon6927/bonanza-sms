@@ -45,17 +45,13 @@
 </template>
 
 <script>
+  import routes from '../router/routes'
   export default {
     name: "Topbar",
     data() {
       return {
         drawer: false,
-        items: [
-          {title: 'Strona główna', icon: 'home', href: '/'},
-          {title: 'Formularz', icon: 'question_answer', href: '/form'},
-          {title: 'Polityka prywatności', icon: 'fas fa-list', href: '/private-policy'},
-          {title: 'O nas', icon: 'fas fa-users', href: '/about'},
-        ]
+        items: routes
       }
     }
   }
