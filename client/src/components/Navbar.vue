@@ -16,15 +16,16 @@
       <v-icon>fas fa-edit</v-icon>
     </v-btn>
 
+    <v-btn dark value="about" to="/about">
+      <span>O nas</span>
+      <v-icon>fas fa-users</v-icon>
+    </v-btn>
+
     <v-btn dark value="private-policy" to="/private-policy">
       <span class="text-xs-center">Polityka pryw</span>
       <v-icon>fas fa-list</v-icon>
     </v-btn>
 
-    <v-btn dark value="about" to="/about">
-      <span>O nas</span>
-      <v-icon>fas fa-users</v-icon>
-    </v-btn>
     </v-bottom-nav>
 </template>
 

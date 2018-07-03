@@ -1,66 +1,71 @@
 <template>
-  <v-container fluid class="mb-5">
-    <v-layout column align-center justify-center>
-      <v-form class="form-wrapper elevation-10" ref="form" lazy-validation v-if="show">
-        <img class="logo" src="/static/western.png">
-        <h2>Łap rabaty, zapisz się już dziś!</h2>
-        <v-text-field
-          v-model="form.name"
-          color="brown darken-3"
-          :counter="20"
-          :rules="form.nameRules"
-          label="Imię"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="form.phone"
-          color="brown darken-3"
-          :rules="form.phoneRules"
-          label="Telefon"
-          required
-        ></v-text-field>
-        <v-checkbox
-          class="form-checkbox"
-          v-model="form.selected"
-          color="primary"
-          value="rodo-policy"
-          hide-details
-          required
-        >
-          <template slot="label">
-            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi
-            zapytania i realizacji usług. Przeczytałem.
-            <router-link tag="a" to="/private-policy">
-              <a>politykę prywatności</a>
-            </router-link>
-          </template>
-        </v-checkbox>
-        <v-checkbox
-          class="form-checkbox"
-          v-model="form.selected"
-          color="primary"
-          value="marketing-policy"
-          label="Wyrażam zgodę na wykorzystywanie telekomunikacyjnych urządzeń końcowych,
-          w tym telefonów dla celów marketingu bezpośredniego."
-          required
-        ></v-checkbox>
-        <v-btn class="mb-3" round block color="light" @click="onReset">Wyczyść</v-btn>
-        <v-btn round block color="light-blue darken-4 white--text" @click="onSubmit">Wyślij</v-btn>
-      </v-form>
+  <v-container class="mb-5" text-xs-center>
+    <v-layout row wrap>
+      <v-flex xs12 sm10 md10 lg8 offset-xs0 offset-sm1 offset-md1 offset-lg2>
+        <v-form class="form-wrapper elevation-10" ref="form" lazy-validation v-if="show">
+          <img class="logo" src="/static/western.png">
+          <h2>Łap rabaty, zapisz się już dziś!</h2>
+          <v-text-field
+            v-model="form.name"
+            color="brown darken-3"
+            :counter="20"
+            :rules="form.nameRules"
+            label="Imię"
+            required
+          ></v-text-field>
+          <v-text-field
+            v-model="form.phone"
+            color="brown darken-3"
+            :rules="form.phoneRules"
+            label="Telefon"
+            required
+          ></v-text-field>
+          <v-checkbox
+            class="form-checkbox"
+            v-model="form.selected"
+            color="primary"
+            value="rodo-policy"
+            hide-details
+            required
+          >
+            <template slot="label">
+              Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi
+              zapytania i realizacji usług. Przeczytałem.
+              <router-link tag="a" to="/private-policy">
+                <a>politykę prywatności</a>
+              </router-link>
+            </template>
+          </v-checkbox>
+          <v-checkbox
+            class="form-checkbox"
+            v-model="form.selected"
+            color="primary"
+            value="marketing-policy"
+            label="Wyrażam zgodę na wykorzystywanie telekomunikacyjnych urządzeń końcowych,
+            w tym telefonów dla celów marketingu bezpośredniego."
+            required
+          ></v-checkbox>
+          <v-btn class="mb-3" round block color="light" @click="onReset">Wyczyść</v-btn>
+          <v-btn round block color="light-blue darken-4 white--text" @click="onSubmit">Wyślij</v-btn>
+        </v-form>
 
-      <v-snackbar auto-height :timeout="10000" :top="'top'" color="red" v-model="form.snackbar">
-        W związku z RODO, zaakcpetuj aby otrzymywać rabaty i powiadomienia drogą SMS
-        <v-btn dark flat @click.native="form.snackbar = false">Zamknij</v-btn>
-      </v-snackbar>
+        <v-snackbar auto-height :timeout="10000" :top="'top'" color="red" v-model="form.snackbar">
+          W związku z RODO, zaakcpetuj aby otrzymywać rabaty i powiadomienia drogą SMS
+          <v-btn dark flat @click.native="form.snackbar = false">Zamknij</v-btn>
+        </v-snackbar>
 
-      <v-snackbar :timeout="5000" :top="'top'" color="red" v-model="form.error">
-        Coś poszło nie tak, spróbuj ponownie
-        <v-btn dark flat @click.native="form.error = false">Zamknij</v-btn>
-      </v-snackbar>
+        <v-snackbar :timeout="5000" :top="'top'" color="red" v-model="form.error">
+          Coś poszło nie tak, spróbuj ponownie
+          <v-btn dark flat @click.native="form.error = false">Zamknij</v-btn>
+        </v-snackbar>
 
+      </v-flex>
     </v-layout>
-    <v-layout column align-center justify-center v-if="grettings">
-      <Greetings></Greetings>
+
+    <v-layout row wrap v-if="grettings">
+      <v-flex xs12 sm10 md10 lg8 offset-xs0 offset-sm1 offset-md1 offset-lg2>
+        <Greetings></Greetings>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
