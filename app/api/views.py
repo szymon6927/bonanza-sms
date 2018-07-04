@@ -51,3 +51,11 @@ def add_opinion():
             response_object = {'status': 'duplicate'}
 
     return jsonify(response_object)
+
+
+@api.route('/api/reviews', methods=["GET"])
+def get_reviews():
+    reviews = Reviews.query.all()
+    reviews_list = [opinion.as_dict() for opinion in reviews]
+    print(reviews_list, flush=True)
+    return jsonify(reviews_list)
