@@ -19,8 +19,14 @@
   },
   {
     "title": "Polecamy",
-    "icon": "far fa-hand-point-left",
+    "icon": "far fa-hand-point-up",
     "href": "/recommend",
+    "show": true
+  },
+  {
+    "title": "Opinie",
+    "icon": "far fa-thumbs-up",
+    "href": "/reviews",
     "show": true
   }
 ]
