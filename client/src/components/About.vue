@@ -7,7 +7,7 @@
           <p class="mb-4">Zapisz się, aby otrzymywać powiadomienia <strong>SMS</strong> dzięki
             którym możesz uzyskać rabaty na wybrane produktu Baru Bonanza.
           </p>
-          <v-carousel hide-delimiters>
+          <v-carousel class="mb-3" hide-delimiters>
             <v-carousel-item
               v-for="(item,i) in items"
               :key="i"
@@ -17,6 +17,10 @@
           <p>
             Bądź zawsze na bieżąco, przyjdź i pokaż SMS aby otrzymać <strong>rabat</strong>
           </p>
+          <v-spacer></v-spacer>
+          <v-btn round large block color="light-blue darken-4 white--text mb-3">Zobacz opinie</v-btn>
+          <v-btn round large block color="light-blue darken-4 white--text" to="/add-opinion">Dodaj opinie</v-btn>
+          <v-spacer></v-spacer>
           <h2 class="pt-2">Lokalizacja</h2>
           <p class="mb-0 font-weight-bold">Bar Bonanza</p>
           <p class="mb-0">ul. Kościuszki 34</p>
