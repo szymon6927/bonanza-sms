@@ -8,6 +8,7 @@ import About from '@/components/About'
 import Recommend from '@/components/Recommend'
 import NotFound from '@/components/NotFound'
 import AddOpinion from '@/components/AddOpinion'
+import Reviews from '@/components/Reviews'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/add-opinion',
       name: 'AddOpinion',
       component: AddOpinion
+    },
+    {
+      path: '/reviews',
+      name: 'Reviews',
+      component: Reviews
     },
     {
       path: '*',

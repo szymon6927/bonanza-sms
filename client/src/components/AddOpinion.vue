@@ -25,18 +25,44 @@
             v-model="form.opinion"
             :rules="form.opinionRules"
             color="brown darken-3"
-            label="Dodaj opinie"
+            label="Opinia"
             hint="Dodaj opinie"
           ></v-textarea>
           <v-btn class="mb-3" round block color="light" @click="onReset">Wyczyść</v-btn>
           <v-btn round block color="light-blue darken-4 white--text" @click="onSubmit">Dodaj opinię</v-btn>
         </v-form>
+
+        <v-snackbar :timeout="5000" :top="'top'" color="red" v-model="form.error">
+          Coś poszło nie tak, spróbuj ponownie.
+          <v-btn dark flat @click.native="form.error = false">Zamknij</v-btn>
+        </v-snackbar>
+
+        <v-snackbar auto-height :timeout="5000" :top="'top'" color="red" v-model="opinionExist">
+          Użytkownik o tym numerze telefonu wystawił już opinie, dziękujemy :)
+          <v-btn dark flat @click.native="form.error = false">Zamknij</v-btn>
+        </v-snackbar>
+
       </v-flex>
     </v-layout>
+
+    <v-layout row wrap v-if="grettings">
+      <v-flex xs12 sm10 md10 lg8 offset-xs0 offset-sm1 offset-md1 offset-lg2>
+        <div class="content__wraper grettings elevation-10 text-xs-center">
+          <img class="logo" src="/static/western.png">
+          <h2 class="mb-3">Dziękujemy za dodanie opinii :)</h2>
+          <v-spacer></v-spacer>
+          <v-btn round large block color="light-blue darken-4 white--text" to="/about">O nas</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn round large block color="light-blue darken-4 white--text mb-3" to="/reviews">Zobacz inne opinie</v-btn>
+        </div>
+      </v-flex>
+    </v-layout>
+
   </v-container>
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "AddOpinion",
     data() {
@@ -56,19 +82,45 @@
           opinionRules: [
             v => !!v || 'Dodaj opinię aby kontynuować'
           ],
-          snackbar: false,
           error: false,
         },
-        show: true
+        opinionExist: false,
+        show: true,
+        grettings: false
       }
     },
     methods: {
       onSubmit: function () {
-        console.log("add opinion")
-        console.log(this.form.opinion)
+        if (this.$refs.form.validate()) {
+          this.sendForm()
+        }
       },
       onReset: function () {
-        console.log("reset")
+        this.$refs.form.reset()
+      },
+      sendForm: function () {
+        const path = '/api/add-opinion';
+        const payload = {
+          'name': this.form.name,
+          'phone': this.form.phone,
+          'opinion': this.form.opinion
+        };
+        axios.post(path, payload)
+          .then((res) => {
+            console.log('successfull');
+            console.log(res.data.status)
+            if (res.data.status === "duplicate") {
+              this.opinionExist = true;
+            }
+            else {
+              this.show = false;
+              this.grettings = true;
+            }
+          })
+          .catch((error) => {
+            console.log('errors', error)
+            this.form.error = true;
+          })
       }
     }
   }
