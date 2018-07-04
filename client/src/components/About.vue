@@ -18,8 +18,8 @@
             Bądź zawsze na bieżąco, przyjdź i pokaż SMS aby otrzymać <strong>rabat</strong>
           </p>
           <v-spacer></v-spacer>
-          <v-btn round large block color="light-blue darken-4 white--text mb-3">Zobacz opinie</v-btn>
-          <v-btn round large block color="light-blue darken-4 white--text" to="/add-opinion">Dodaj opinie</v-btn>
+          <v-btn round large block color="light-blue darken-4 white--text mb-3" to="/reviews">Zobacz opinie</v-btn>
+          <v-btn round large block color="success white--text" to="/add-opinion">Dodaj opinie</v-btn>
           <v-spacer></v-spacer>
           <h2 class="pt-2">Lokalizacja</h2>
           <p class="mb-0 font-weight-bold">Bar Bonanza</p>

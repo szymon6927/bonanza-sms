@@ -29,12 +29,15 @@
             required
           >
             <template slot="label">
-              Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi
-              zapytania i realizacji usług. Przeczytałem.
-              <router-link tag="a" to="/private-policy">
-                <a>politykę prywatności</a>
-              </router-link>
+              <div>
+                <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi
+                  zapytania i realizacji usług. Przeczytałem.</span>
+                <router-link tag="a" to="/private-policy">
+                  <a>politykę prywatności</a>
+                </router-link>
+              </div>
             </template>
+
           </v-checkbox>
           <v-checkbox
             class="form-checkbox"

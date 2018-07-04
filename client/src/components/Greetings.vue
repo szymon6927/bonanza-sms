@@ -7,13 +7,24 @@
       <v-icon class="pr-2" large color="yellow darken-1">fas fa-sun</v-icon>
       <v-icon large color="orange darken-3">fas fa-umbrella-beach</v-icon>
     </div>
-    <v-btn round block large color="success mt-3" to="/">Strona główna</v-btn>
+    <v-btn round block large color="success mt-3" to="/recommend">Szef kuchni poleca</v-btn>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Greetings"
+    name: "Greetings",
+    methods: {
+      redirect: function () {
+        console.log("redirect")
+        setTimeout( () => {
+          this.$router.push('/about');
+        },5000)
+      }
+    },
+    mounted() {
+      this.redirect()
+    }
   }
 </script>
 

@@ -51,8 +51,7 @@
           <img class="logo" src="/static/western.png">
           <h2 class="mb-3">Dziękujemy za dodanie opinii :)</h2>
           <v-spacer></v-spacer>
-          <v-btn round large block color="light-blue darken-4 white--text" to="/about">O nas</v-btn>
-          <v-spacer></v-spacer>
+          <v-btn round large block class="mb-3" color="light-blue darken-4 white--text" to="/about">O nas</v-btn>
           <v-btn round large block color="light-blue darken-4 white--text mb-3" to="/reviews">Zobacz inne opinie</v-btn>
         </div>
       </v-flex>

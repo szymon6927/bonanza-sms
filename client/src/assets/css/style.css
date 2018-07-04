@@ -27,7 +27,7 @@ ul, ol {
   height: 5rem;
 }
 
-.form-checkbox label {
+.form-checkbox .v-label {
   font-size: 12px;
   width: auto;
   height: auto;
@@ -66,12 +66,27 @@ ul, ol {
 }
 
 .img__responsive {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .recommend {
   border-radius: 10px;
+}
+
+.card__content {
+  padding: 16px;
+  text-align: left;
+  border-top: 1px solid #cacaca;
+}
+
+.v-bottom-nav .v-btn {
+  padding: 8px 5px 5px;
+}
+
+.v-bottom-nav .v-btn .v-btn__content span:first-child {
+  white-space: initial;
+  text-align: center;
 }
 
 @media (max-width: 1024px) {
