@@ -56,12 +56,12 @@ ul, ol {
   width: 40%;
 }
 
-.jumbotron__image {
+.v-jumbotron__image {
   max-width: 100% !important;
   height: auto !important;
 }
 
-.carousel {
+.v-carousel {
   height: 40vh;
 }
 
@@ -75,13 +75,13 @@ ul, ol {
 }
 
 @media (max-width: 1024px) {
-  .carousel {
+  .v-carousel {
     height: 28vh;
   }
 }
 
 @media (max-width: 695px) {
-  .carousel {
+  .v-carousel {
     height: 25vh;
   }
 }
