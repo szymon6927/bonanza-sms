@@ -2,21 +2,25 @@
   {
     "title": "Strona główna",
     "icon": "home",
-    "href": "/"
+    "href": "/",
+    "show": true
   },
   {
     "title": "Formularz",
     "icon": "question_answer",
-    "href": "/form"
+    "href": "/form",
+    "show": true
   },
   {
     "title": "O nas",
     "icon": "fas fa-users",
-    "href": "/about"
+    "href": "/about",
+    "show": true
   },
   {
-    "title": "Polityka pryw",
-    "icon": "fas fa-list",
-    "href": "/private-policy"
+    "title": "Polecamy",
+    "icon": "far fa-hand-point-left",
+    "href": "/recommend",
+    "show": true
   }
 ]

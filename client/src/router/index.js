@@ -5,7 +5,9 @@ import Form from '@/components/Form'
 import PrivatePolicy from '@/components/PrivatePolicy'
 import Clients from '@/components/Clients'
 import About from '@/components/About'
+import Recommend from '@/components/Recommend'
 import NotFound from '@/components/NotFound'
+import AddOpinion from '@/components/AddOpinion'
 
 Vue.use(Router)
 
@@ -35,6 +37,16 @@ export default new Router({
       path: '/clients',
       name: 'Clients',
       component: Clients
+    },
+    {
+      path: '/recommend',
+      name: 'Recommend',
+      component: Recommend
+    },
+    {
+      path: '/add-opinion',
+      name: 'AddOpinion',
+      component: AddOpinion
     },
     {
       path: '*',

@@ -65,6 +65,15 @@ ul, ol {
   height: 40vh;
 }
 
+.img__responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.recommend {
+  border-radius: 10px;
+}
+
 @media (max-width: 1024px) {
   .carousel {
     height: 28vh;
