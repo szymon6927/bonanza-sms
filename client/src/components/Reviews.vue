@@ -9,8 +9,12 @@
               <v-card-title primary-title>
                 <v-icon class="pr-3">fas fa-user-circle</v-icon>
                 <div class="card__title">{{ opinion.name }}</div>
-                <v-btn absolute right small fab color="transparent" class="elevation-1">
-                  <v-icon color="yellow darken-1">far fa-star</v-icon>
+                <v-btn v-if="opinion.rating" absolute right align-content-center color="transparent" class="elevation-2">
+                  <star-rating
+                  :show-rating="false"
+                  :star-size="20"
+                  :rating="opinion.rating"
+                  :read-only="true"></star-rating>
                 </v-btn>
               </v-card-title>
               <div class="card__content">
@@ -33,9 +37,13 @@
 
 <script>
   import axios from 'axios'
+  import StarRating from 'vue-star-rating'
 
   export default {
     name: "Reviews",
+    components: {
+      StarRating
+    },
     data() {
       return {
         reviews: [],

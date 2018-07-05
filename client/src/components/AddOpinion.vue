@@ -5,7 +5,7 @@
         <v-form class="form-wrapper elevation-10" ref="form" lazy-validation v-if="show">
           <img class="logo" src="/static/western.png">
           <h2>Dodaj opinię</h2>
-          <p>Dodaj imię i nr.tel w celach weryfikacji</p>
+          <p>Dodaj imię i numer tel w celach weryfikacji</p>
           <v-text-field
             v-model="form.name"
             color="brown darken-3"
@@ -28,6 +28,9 @@
             label="Opinia"
             hint="Dodaj opinie"
           ></v-textarea>
+
+          <star-rating :show-rating="false" @rating-selected="setRating"></star-rating>
+
           <v-btn class="mb-3" round block color="light" @click="onReset">Wyczyść</v-btn>
           <v-btn round block color="light-blue darken-4 white--text" @click="onSubmit">Dodaj opinię</v-btn>
         </v-form>
@@ -62,8 +65,13 @@
 
 <script>
   import axios from 'axios'
+  import StarRating from 'vue-star-rating'
+
   export default {
     name: "AddOpinion",
+    components: {
+      StarRating
+    },
     data() {
       return {
         form: {
@@ -85,7 +93,8 @@
         },
         opinionExist: false,
         show: true,
-        grettings: false
+        grettings: false,
+        rating: 0
       }
     },
     methods: {
@@ -97,12 +106,16 @@
       onReset: function () {
         this.$refs.form.reset()
       },
+      setRating: function (rating) {
+        this.rating = rating;
+      },
       sendForm: function () {
         const path = '/api/add-opinion';
         const payload = {
           'name': this.form.name,
           'phone': this.form.phone,
-          'opinion': this.form.opinion
+          'opinion': this.form.opinion,
+          'rating': this.rating
         };
         axios.post(path, payload)
           .then((res) => {

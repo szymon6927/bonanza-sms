@@ -36,6 +36,7 @@ def add_opinion():
     name = data.get("name")
     phone = data.get("phone")
     opinion = data.get("opinion")
+    rating = data.get("rating")
 
     print("phone: ", phone, flush=True)
 
@@ -44,7 +45,7 @@ def add_opinion():
         valid_review = Reviews.query.filter_by(phone=phone).first()
         if valid_client and valid_review is None:
             response_object = {'status': 'success'}
-            opinion = Reviews(name=name, phone=phone, opinion=opinion)
+            opinion = Reviews(name=name, phone=phone, opinion=opinion, rating=rating)
             db.session.add(opinion)
             db.session.commit()
         else:

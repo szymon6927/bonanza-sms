@@ -89,6 +89,14 @@ ul, ol {
   text-align: center;
 }
 
+.vue-star-rating-star {
+  margin-top: 3px;
+}
+
+.vue-star-rating {
+  margin: 0 auto;
+}
+
 @media (max-width: 1024px) {
   .v-carousel {
     height: 28vh;

@@ -12,6 +12,7 @@ class Reviews(db.Model):
     name = db.Column(db.String(20))
     phone = db.Column(db.String(20))
     opinion = db.Column(db.Text)
+    rating = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 
     def __repr__(self):
