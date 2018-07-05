@@ -23,10 +23,6 @@ ul, ol {
   text-align: center;
 }
 
-.form-checkbox {
-  height: 5rem;
-}
-
 .form-checkbox .v-label {
   font-size: 12px;
   width: auto;

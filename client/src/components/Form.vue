@@ -21,7 +21,7 @@
             required
           ></v-text-field>
           <v-checkbox
-            class="form-checkbox"
+            class="form-checkbox mt-1"
             v-model="form.selected"
             color="primary"
             value="rodo-policy"
@@ -40,7 +40,7 @@
 
           </v-checkbox>
           <v-checkbox
-            class="form-checkbox"
+            class="form-checkbox mt-1"
             v-model="form.selected"
             color="primary"
             value="marketing-policy"
