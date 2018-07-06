@@ -8,6 +8,7 @@ class DevelopmentConfig(Config):
     """
     Development configurations
     """
+    SECRET_KEY = '64611845097b83af8c787f73'
     DEBUG = True
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False

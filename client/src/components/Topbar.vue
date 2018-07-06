@@ -28,6 +28,31 @@
           </v-list-tile>
         </template>
 
+        <v-divider></v-divider>
+
+        <v-list-tile avatar>
+          <v-list-tile-avatar>
+            <img src="/static/western.png">
+          </v-list-tile-avatar>
+
+          <v-list-tile-content v-if="isAuthenticated">
+            <v-list-tile-title>Funkcje admina</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+
+        <v-list-tile v-if="isAuthenticated" to="/clients">
+          <v-list-tile-content>
+            <v-list-tile-title>Zobacz zapisanych</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-if="isAuthenticated" to="/chef-desc">
+          <v-list-tile-content>
+            <v-list-tile-title>Dodaj opis "szef kuchni poleca"</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
 
@@ -39,6 +64,9 @@
         <template v-for="item in items">
           <v-btn flat :to="item.href">{{ item.title }}</v-btn>
         </template>
+
+        <v-btn v-if="isAuthenticated" flat to="/clients">clients</v-btn>
+
       </v-toolbar-items>
     </v-toolbar>
   </div>
@@ -46,12 +74,18 @@
 
 <script>
   import routes from '../router/routes'
+
   export default {
     name: "Topbar",
     data() {
       return {
         drawer: false,
         items: routes
+      }
+    },
+    computed: {
+      isAuthenticated() {
+        return this.$store.getters.isAuthenticated
       }
     }
   }

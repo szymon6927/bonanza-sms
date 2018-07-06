@@ -39,7 +39,6 @@
         const path = '/api/clients'
         axios.get(path)
           .then((res) => {
-            console.log(res.data)
             this.clients = res.data
           })
           .catch((error) => {

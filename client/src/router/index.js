@@ -9,6 +9,9 @@ import Recommend from '@/components/Recommend'
 import NotFound from '@/components/NotFound'
 import AddOpinion from '@/components/AddOpinion'
 import Reviews from '@/components/Reviews'
+import Login from '@/components/Login'
+import ChefDescription from '@/components/ChefDescription'
+import store from '@/store'
 
 Vue.use(Router)
 
@@ -37,7 +40,14 @@ export default new Router({
     {
       path: '/clients',
       name: 'Clients',
-      component: Clients
+      component: Clients,
+      beforeEnter(to, from, next) {
+        if (!store.getters.isAuthenticated) {
+          next('/login')
+        } else {
+          next()
+        }
+      }
     },
     {
       path: '/recommend',
@@ -53,6 +63,28 @@ export default new Router({
       path: '/reviews',
       name: 'Reviews',
       component: Reviews
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Login
+    },
+    {
+      path: '/chef-desc',
+      name: 'ChefDescription',
+      component: ChefDescription,
+      beforeEnter(to, from, next) {
+        if (!store.getters.isAuthenticated) {
+          next('/login')
+        } else {
+          next()
+        }
+      }
     },
     {
       path: '*',

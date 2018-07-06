@@ -93,6 +93,10 @@ ul, ol {
   margin: 0 auto;
 }
 
+.vueditor {
+  min-height: 300px;
+}
+
 @media (max-width: 1024px) {
   .v-carousel {
     height: 28vh;

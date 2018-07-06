@@ -1,46 +1,39 @@
 import datetime
-from app import db, login_manager
-from flask_login import UserMixin
+from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class Users(db.Model, UserMixin):
+class Users(db.Model):
     """
     Create table for admin users
     """
     __table__name = 'users'
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    email = db.Column(db.String(60), unique=True)
-    username = db.Column(db.String(50), unique=True)
-    first_name = db.Column(db.String(60))
-    password_hash = db.Column(db.String(128))
+    email = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(258))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
-    is_admin = db.Column(db.Boolean, default=False)
 
-    @property
-    def password(self):
-        """
-        Prevent pasword from being accessed
-        """
-        raise AttributeError("Password is not readable attribute")
+    def __init__(self, email, password):
+        self.email = email
+        self.password = generate_password_hash(password, method='sha256')
 
-    @password.setter
-    def password(self, password):
-        """
-        Set password to a hashed password
-        """
-        self.password_hash = generate_password_hash(password)
+    @classmethod
+    def authenticate(cls, **kwargs):
+        email = kwargs.get("email")
+        password = kwargs.get("password")
 
-    def verify_password(self, password):
-        """
-        Check if hashed password matches actual password
-        """
-        return check_password_hash(self.password_hash, password)
+        if not email or not password:
+            return None
+
+        user = cls.query.filter_by(email=email).first()
+
+        if not user or not check_password_hash(user.password, password):
+            return None
+
+        return user
+
+    def as_dict(self):
+        return dict(id=self.id, email=self.email)
 
     def __repr__(self):
         return "<Users: {}>".format(self.email)
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return Users.query.get(int(user_id))
