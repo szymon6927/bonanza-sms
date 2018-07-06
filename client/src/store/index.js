@@ -9,7 +9,7 @@ Vue.use(Vuex)
 const state = {
   // single source of data
   user: {},
-  jwt: localStorage.getItem('token')
+  jwt: ''
 };
 
 const actions = {
