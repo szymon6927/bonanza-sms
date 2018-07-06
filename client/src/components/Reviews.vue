@@ -27,7 +27,7 @@
 
         <v-snackbar :timeout="5000" :top="'top'" color="red" v-model="error">
           Coś poszło nie tak, spróbuj ponownie.
-          <v-btn dark flat @click.native="form.error = false">Zamknij</v-btn>
+          <v-btn dark flat @click.native="error = false">Zamknij</v-btn>
         </v-snackbar>
 
       </v-flex>

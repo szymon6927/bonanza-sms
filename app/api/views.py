@@ -3,6 +3,7 @@ from . import api
 from ..models.Clients import Clients
 from ..models.Reviews import Reviews
 from ..models.Users import Users
+from ..models.Content import Content
 from .. import db
 from functools import wraps
 from datetime import datetime, timedelta
@@ -116,3 +117,21 @@ def login_user():
         'exp': datetime.utcnow() + timedelta(minutes=30)},
         current_app.config['SECRET_KEY'])
     return jsonify({'token': token.decode('UTF-8')})
+
+
+@api.route('/api/get-chef-desc', methods=["GET"])
+def get_chef_desc():
+    chef_desc = db.session.query(Content.chef_desc).order_by(Content.id.desc()).first()
+    return jsonify(chef_desc[0])
+
+
+@api.route('/api/set-chef-desc', methods=["POST"])
+def set_chef_desc():
+    data = request.get_json()
+    desc = data.get('chef_desc')
+    content = Content(chef_desc=desc)
+    db.session.add(content)
+    db.session.commit()
+    response_object = {'status': 'success'}
+    return jsonify(response_object)
+

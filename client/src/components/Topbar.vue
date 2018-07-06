@@ -64,9 +64,6 @@
         <template v-for="item in items">
           <v-btn flat :to="item.href">{{ item.title }}</v-btn>
         </template>
-
-        <v-btn v-if="isAuthenticated" flat to="/clients">clients</v-btn>
-
       </v-toolbar-items>
     </v-toolbar>
   </div>
