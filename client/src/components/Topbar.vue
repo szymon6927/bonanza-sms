@@ -30,7 +30,7 @@
 
         <v-divider></v-divider>
 
-        <v-list-tile avatar>
+        <v-list-tile avatar v-if="isAuthenticated">
           <v-list-tile-avatar>
             <img src="/static/western.png">
           </v-list-tile-avatar>
