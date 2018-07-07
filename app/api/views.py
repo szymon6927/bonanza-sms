@@ -8,6 +8,8 @@ from .. import db
 from functools import wraps
 from datetime import datetime, timedelta
 import jwt
+import smtplib
+from email.message import EmailMessage
 
 
 def token_required(f):
@@ -43,6 +45,30 @@ def token_required(f):
     return _verify
 
 
+def send_mail(text):
+    sender = "contact@szymonmiks.pl"
+    receiver = ["miks.szymon@gmail.com"]
+
+    message = EmailMessage()
+
+    message_text = """Dodano nowego klienta ({})""".format(datetime.now().strftime("%Y-%m-%d %H:%M"))
+    message_text += text
+
+    message.set_content(message_text)
+
+    message['Subject'] = "Nowy klient w pyszne.barbonanza.pl"
+    message['From'] = "info@barbonanza.pl"
+    message['To'] = ["miks.szymon@gmail.com", "aga.miks03@gmail.com"]
+
+    try:
+        smtp_obj = smtplib.SMTP("mail26.mydevil.net")
+        smtp_obj.send_message(message)
+        print("Successfully sent email")
+        smtp_obj.quit()
+    except smtplib.SMTPException:
+        print("Error: unable to send an e-mail")
+
+
 @api.route('/api/client', methods=["POST"])
 def add_client():
     data = request.get_json()
@@ -58,6 +84,9 @@ def add_client():
             client = Clients(name=name, phone=phone)
             db.session.add(client)
             db.session.commit()
+            if not current_app.config['DEBUG']:
+                mail_text = "Nowy klient:\n Imię: {} \n Numer tel: {}".format(name, phone)
+                send_mail(mail_text)
     else:
         response_object = {'status': 'error'}
     return jsonify(response_object)
