@@ -3,8 +3,9 @@
     <v-layout row wrap>
       <v-flex xs12 sm10 md10 lg8 offset-xs0 offset-sm1 offset-md1 offset-lg2>
         <v-form class="form-wrapper elevation-10" ref="form" lazy-validation v-if="show">
+          <img class="logo" src="/static/chef.png">
           <img class="logo" src="/static/western.png">
-          <h2>Łap rabaty, zapisz się już dziś!</h2>
+          <h2 class="mt-3">Łap rabaty, zapisz się już dziś!</h2>
           <v-text-field
             v-model="form.name"
             color="brown darken-3"

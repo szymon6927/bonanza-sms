@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
+import moment from 'moment'
 
 import 'vuetify/dist/vuetify.min.css'
 import './assets/css/style.css'
@@ -21,3 +22,9 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    return moment(String(value)).format('DD/MM/YY hh:mm')
+  }
+});

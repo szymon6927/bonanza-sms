@@ -7,8 +7,11 @@
           <template v-for="opinion in reviews">
             <v-card class="mb-4 elevation-5">
               <v-card-title primary-title>
-                <v-icon class="pr-3">fas fa-user-circle</v-icon>
-                <div class="card__title">{{ opinion.name }}</div>
+                <v-icon class="pr-2">fas fa-user-circle</v-icon>
+                <div class="card__title">
+                  <div class="client-name">{{ opinion.name }}</div>
+                  <div class="opinion-date">({{ opinion.created_at | formatDate }})</div>
+                </div>
                 <v-btn v-if="opinion.rating" absolute right align-content-center color="transparent" class="elevation-2">
                   <star-rating
                   :show-rating="false"
@@ -70,5 +73,10 @@
 </script>
 
 <style scoped>
-
+  .opinion-date {
+    font-size: 11px;
+  }
+  .card__title {
+    line-height: 16px;
+  }
 </style>
