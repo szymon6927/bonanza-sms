@@ -50,7 +50,10 @@ def add_client():
     phone = data.get("phone")
     if name and phone:
         response_object = {'status': 'success'}
-        is_existing = Clients.query.filter_by(phone=phone).first()
+        # calculating 7 day before
+        date_before = datetime.today() - timedelta(days=7)
+        date_midnight = datetime.combine(date_before, datetime.min.time())
+        is_existing = Clients.query.filter_by(phone=phone).filter(Clients.created_at > date_midnight).first()
         if is_existing is None:
             client = Clients(name=name, phone=phone)
             db.session.add(client)
@@ -76,8 +79,6 @@ def add_opinion():
     phone = data.get("phone")
     opinion = data.get("opinion")
     rating = data.get("rating")
-
-    print("phone: ", phone, flush=True)
 
     if name and phone and opinion:
         valid_client = Clients.query.filter_by(phone=phone).first()
