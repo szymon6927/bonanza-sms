@@ -1,4 +1,5 @@
 from flask import request, jsonify, current_app
+import os
 from . import api
 from ..models.Clients import Clients
 from ..models.Reviews import Reviews
@@ -10,6 +11,7 @@ from datetime import datetime, timedelta
 import jwt
 import smtplib
 from email.message import EmailMessage
+from smsapi.client import SmsApiPlClient
 
 
 def token_required(f):
@@ -45,28 +47,35 @@ def token_required(f):
     return _verify
 
 
-def send_mail(text):
-    sender = "contact@szymonmiks.pl"
-    receiver = ["miks.szymon@gmail.com"]
+def send_mail(subject, text):
+    if not current_app.config['DEBUG']:
+        message = EmailMessage()
 
-    message = EmailMessage()
+        message_text = """Dodano nowego klienta ({})""".format(datetime.now().strftime("%Y-%m-%d %H:%M"))
+        message_text += text
 
-    message_text = """Dodano nowego klienta ({})""".format(datetime.now().strftime("%Y-%m-%d %H:%M"))
-    message_text += text
+        message.set_content(message_text)
 
-    message.set_content(message_text)
+        message['Subject'] = subject
+        message['From'] = "info@barbonanza.pl"
+        message['To'] = ["miks.szymon@gmail.com", "aga.miks03@gmail.com"]
 
-    message['Subject'] = "Nowy klient w pyszne.barbonanza.pl"
-    message['From'] = "info@barbonanza.pl"
-    message['To'] = ["miks.szymon@gmail.com", "aga.miks03@gmail.com"]
+        try:
+            smtp_obj = smtplib.SMTP("mail26.mydevil.net")
+            smtp_obj.send_message(message)
+            print("Successfully sent email")
+            smtp_obj.quit()
+        except smtplib.SMTPException:
+            print("Error: unable to send an e-mail")
 
-    try:
-        smtp_obj = smtplib.SMTP("mail26.mydevil.net")
-        smtp_obj.send_message(message)
-        print("Successfully sent email")
-        smtp_obj.quit()
-    except smtplib.SMTPException:
-        print("Error: unable to send an e-mail")
+
+def send_welcome_sms(name, number):
+    if not current_app.config['DEBUG']:
+        access_token = os.getenv('SMSAPI_ACCESS_TOKEN')
+        client = SmsApiPlClient(access_token=access_token)
+        sms_message = "{}! Bar Bonaza dziekuje za dolaczenie do programu, wkrotce dostaniesz " \
+                      "od nas kolejne SMS z promocjami i rabatami!"
+        client.sms.send(to=number, message=sms_message)
 
 
 @api.route('/api/client', methods=["POST"])
@@ -84,9 +93,12 @@ def add_client():
             client = Clients(name=name, phone=phone)
             db.session.add(client)
             db.session.commit()
-            if not current_app.config['DEBUG']:
-                mail_text = "Nowy klient:\n Imię: {} \n Numer tel: {}".format(name, phone)
-                send_mail(mail_text)
+            # send mail with info about register
+            subject = "Nowy klient w pyszne.barbonanza.pl"
+            mail_text = "Nowy klient:\n Imię: {} \n Numer tel: {}".format(name, phone)
+            send_mail(subject, mail_text)
+            # send SMS with welcome
+            send_welcome_sms(name, phone)
     else:
         response_object = {'status': 'error'}
     return jsonify(response_object)
@@ -117,6 +129,10 @@ def add_opinion():
             opinion = Reviews(name=name, phone=phone, opinion=opinion, rating=rating)
             db.session.add(opinion)
             db.session.commit()
+
+            mail_text = "Dodano nową opinię od {} \n opinia: {} \n gwiazdki: {}".format(name, opinion, rating)
+            subject = "Nowa opinia na pyszne.barbonanza.pl"
+            send_mail(subject, mail_text)
         else:
             response_object = {'status': 'duplicate'}
 
@@ -125,7 +141,7 @@ def add_opinion():
 
 @api.route('/api/reviews', methods=["GET"])
 def get_reviews():
-    reviews = Reviews.query.all()
+    reviews = Reviews.query.order_by(Reviews.created_at.desc()).all()
     reviews_list = [opinion.as_dict() for opinion in reviews]
     print(reviews_list, flush=True)
     return jsonify(reviews_list)
@@ -164,4 +180,3 @@ def set_chef_desc():
     db.session.commit()
     response_object = {'status': 'success'}
     return jsonify(response_object)
-
