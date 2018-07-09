@@ -74,7 +74,7 @@ def send_welcome_sms(name, number):
         access_token = os.getenv('SMSAPI_ACCESS_TOKEN')
         client = SmsApiPlClient(access_token=access_token)
         sms_message = "{}! Bar Bonaza dziekuje za dolaczenie do programu, wkrotce dostaniesz " \
-                      "od nas kolejne SMS z promocjami i rabatami!"
+                      "od nas kolejne SMS z promocjami i rabatami!".format(name)
         client.sms.send(to=number, message=sms_message)
 
 
