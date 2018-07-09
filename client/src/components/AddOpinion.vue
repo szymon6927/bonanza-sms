@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12 sm10 md10 lg8 offset-xs0 offset-sm1 offset-md1 offset-lg2>
         <v-form class="form-wrapper elevation-10" ref="form" lazy-validation v-if="show">
-          <img class="logo" src="/static/western.png">
+          <img class="logo" src="@/assets/img/chef.png">
           <h2>Dodaj opinię</h2>
           <p>Dodaj imię i numer tel w celach weryfikacji</p>
           <v-text-field
@@ -42,7 +42,7 @@
 
         <v-snackbar auto-height :timeout="5000" :top="'top'" color="red" v-model="opinionExist">
           Użytkownik o tym numerze telefonu wystawił już opinie, dziękujemy :)
-          <v-btn dark flat @click.native="form.error = false">Zamknij</v-btn>
+          <v-btn dark flat @click.native="opinionExist = false">Zamknij</v-btn>
         </v-snackbar>
 
       </v-flex>
@@ -51,7 +51,7 @@
     <v-layout row wrap v-if="grettings">
       <v-flex xs12 sm10 md10 lg8 offset-xs0 offset-sm1 offset-md1 offset-lg2>
         <div class="content__wraper grettings elevation-10 text-xs-center">
-          <img class="logo" src="/static/western.png">
+          <img class="logo" src="@/assets/img/chef.png">
           <h2 class="mb-3">Dziękujemy za dodanie opinii :)</h2>
           <v-spacer></v-spacer>
           <v-btn round large block class="mb-3" color="light-blue darken-4 white--text" to="/about">O nas</v-btn>

@@ -17,7 +17,7 @@
 <script>
   export default {
     name: "Home",
-    data () {
+    data() {
       return {
         message: "Bar bonanza! Bądź na bieżąco!"
       }
@@ -29,6 +29,7 @@
   h3 {
     font-weight: 600;
   }
+
   @media (min-width: 615px) {
     .logo {
       width: 40%;

@@ -25,7 +25,7 @@
 
 <script>
   import axios from 'axios'
-  import { createEditor } from 'vueditor'
+  import {createEditor} from 'vueditor'
   import 'vueditor/dist/style/vueditor.min.css'
 
   export default {

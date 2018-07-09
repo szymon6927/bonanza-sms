@@ -25,6 +25,7 @@
     text-decoration: none;
     transition: 0.25s;
   }
+
   a:hover {
     font-weight: bold;
   }

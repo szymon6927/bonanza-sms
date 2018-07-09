@@ -11,8 +11,8 @@
             class="elevation-10"
           >
             <template slot="items" slot-scope="props">
-                <td class="text-xs-center">{{ props.item.name }}</td>
-                <td class="text-xs-center">{{ props.item.phone }}</td>
+              <td class="text-xs-center">{{ props.item.name }}</td>
+              <td class="text-xs-center">{{ props.item.phone }}</td>
             </template>
           </v-data-table>
         </div>
@@ -23,13 +23,14 @@
 
 <script>
   import axios from 'axios'
+
   export default {
     name: "Clients",
     data() {
       return {
         headers: [
-          { text: 'Imię', value: 'name' },
-          { text: 'Telefon', value: 'phone' }
+          {text: 'Imię', value: 'name'},
+          {text: 'Telefon', value: 'phone'}
         ],
         clients: []
       }

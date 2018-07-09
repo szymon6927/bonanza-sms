@@ -80,7 +80,7 @@
 
   export default {
     name: 'Form',
-    components: { Greetings },
+    components: {Greetings},
     data() {
       return {
         form: {
@@ -113,10 +113,10 @@
           }
         }
       },
-      onReset: function() {
+      onReset: function () {
         this.$refs.form.reset()
       },
-      sendForm: function() {
+      sendForm: function () {
         const path = '/api/client';
         const payload = {
           'name': this.form.name,

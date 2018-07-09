@@ -33,7 +33,7 @@
 </template>
 
 <script>
-  import { EventBus } from "@/utils";
+  import {EventBus} from "@/utils";
 
   export default {
     name: "Login",

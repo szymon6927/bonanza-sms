@@ -12,12 +12,13 @@
                   <div class="client-name">{{ opinion.name }}</div>
                   <div class="opinion-date">({{ opinion.created_at | formatDate }})</div>
                 </div>
-                <v-btn v-if="opinion.rating" absolute right align-content-center color="transparent" class="elevation-2">
+                <v-btn v-if="opinion.rating" absolute right align-content-center color="transparent"
+                       class="elevation-2">
                   <star-rating
-                  :show-rating="false"
-                  :star-size="20"
-                  :rating="opinion.rating"
-                  :read-only="true"></star-rating>
+                    :show-rating="false"
+                    :star-size="20"
+                    :rating="opinion.rating"
+                    :read-only="true"></star-rating>
                 </v-btn>
               </v-card-title>
               <div class="card__content">
@@ -76,6 +77,7 @@
   .opinion-date {
     font-size: 11px;
   }
+
   .card__title {
     line-height: 16px;
   }

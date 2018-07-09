@@ -1,11 +1,11 @@
 <template>
   <v-bottom-nav
-      :active.sync="bottomNav"
-      :value="true"
-      fixed
-      color="brown darken-3"
-      class="hidden-md-and-up"
-    >
+    :active.sync="bottomNav"
+    :value="true"
+    fixed
+    color="brown darken-3"
+    class="hidden-md-and-up"
+  >
 
     <template v-for="item in items">
       <v-btn dark :to="item.href">
@@ -14,14 +14,15 @@
       </v-btn>
     </template>
 
-    </v-bottom-nav>
+  </v-bottom-nav>
 </template>
 
 <script>
   import routes from '../router/routes'
+
   export default {
     name: 'Navbar',
-    data () {
+    data() {
       return {
         bottomNav: 'home',
         items: routes

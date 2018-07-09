@@ -126,8 +126,8 @@ def add_opinion():
         valid_review = Reviews.query.filter_by(phone=phone).first()
         if valid_client and valid_review is None:
             response_object = {'status': 'success'}
-            opinion = Reviews(name=name, phone=phone, opinion=opinion, rating=rating)
-            db.session.add(opinion)
+            client_opinion = Reviews(name=name, phone=phone, opinion=opinion, rating=rating)
+            db.session.add(client_opinion)
             db.session.commit()
 
             mail_text = "Dodano nową opinię od {} \n opinia: {} \n gwiazdki: {}".format(name, opinion, rating)

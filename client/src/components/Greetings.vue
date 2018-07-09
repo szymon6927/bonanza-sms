@@ -17,9 +17,9 @@
     methods: {
       redirect: function () {
         console.log("redirect")
-        setTimeout( () => {
+        setTimeout(() => {
           this.$router.push('/about');
-        },5000)
+        }, 5000)
       }
     },
     mounted() {
